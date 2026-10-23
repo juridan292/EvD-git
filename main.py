@@ -1,27 +1,35 @@
-from pyscript import web, when
+from pyscript import document
 
-# Sample per-item rates for demonstration only.
-rates = {
-    "cards": 0.18,
-    "flyers": 0.12,
-    "posters": 2.50,
+# Unit prices per product
+RATES = {
+    "cards": 0.15,
+    "flyers": 0.35,
+    "posters": 2.50
 }
 
-@when("click", "#estimate-button")
+PRODUCT_NAMES = {
+    "cards": "Business cards",
+    "flyers": "Flyers",
+    "posters": "Posters"
+}
+
 def calculate_estimate(event):
-    product = web.page["product"].value
-    quantity_text = web.page["quantity"].value
-
+    product_select = document.querySelector("#product")
+    quantity_input = document.querySelector("#quantity")
+    estimate_output = document.querySelector("#estimate")
+    
+    product_key = product_select.value
+    
     try:
-        quantity = int(quantity_text)
-        if quantity < 1:
-            raise ValueError
-    except (TypeError, ValueError):
-        web.page["estimate"].innerText = "Enter a quantity of 1 or more."
-        return
-
-    total = quantity * rates[product]
-    web.page["estimate"].innerText = (
-        f"Sample estimate: ${total:,.2f} "
-        f"for {quantity:,} {product.replace('-', ' ')}."
-    )
+        qty = int(quantity_input.value)
+        if qty <= 0:
+            estimate_output.innerText = "Please enter a quantity greater than 0."
+            return
+            
+        unit_price = RATES.get(product_key, 0.20)
+        total = qty * unit_price
+        product_name = PRODUCT_NAMES.get(product_key, "Items")
+        
+        estimate_output.innerText = f"Estimated total for {qty:,} {product_name}: ${total:,.2f}"
+    except ValueError:
+        estimate_output.innerText = "Please enter a valid numeric quantity."
