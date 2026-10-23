@@ -350,6 +350,58 @@
       font-size: 0.95rem;
       line-height: 1.6;
   }
+    /* Specialty Finishes Section Styles */
+.finishes-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.finishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.finish-card {
+    position: relative;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.finish-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.finish-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: var(--lime);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.finish-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+.finish-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
     footer {
         display: flex;
         justify-content: space-between;
@@ -455,7 +507,28 @@
                     </article>
                 </div>
             </section>
-
+            <!-- Specialty Finishes Section -->
+<section class="finishes-section">
+    <div class="section-heading" style="margin-bottom: 24px;">
+        <h2>Crafted with specialty finishes.</h2>
+        <p>Elevate your brand with tactile touches that demand attention.</p>
+    </div>
+    <div class="finishes-grid">
+        <div class="finish-card">
+            <div class="finish-badge">Popular</div>
+            <h3>Gold & Silver Foil</h3>
+            <p>Reflective metallic stamping that adds a striking luxury sheen to logos and borders.</p>
+        </div>
+        <div class="finish-card">
+            <h3>Velvet Soft-Touch</h3>
+            <p>A velvety, matte lamination that feels soft to the touch and deepens color richness.</p>
+        </div>
+        <div class="finish-card">
+            <h3>Spot UV Gloss</h3>
+            <p>High-gloss raised coating applied over specific areas for high-contrast texture.</p>
+        </div>
+    </div>
+</section>  
             <section class="quote-section" id="quote">
                 <h2>Get a quick estimate.</h2>
                 <p>Choose a product and quantity to see a sample estimate. Final pricing may vary.</p>
@@ -483,9 +556,8 @@
 <button class="button" id="estimate-button" py-click="calculate_estimate" type="button">
     Calculate
 </button>
-
-<!-- 2. FAQ SECTION (Insert right after </section> of the quote-section) -->
-<section class="faq-section" id="faq">
+                <p id="estimate" aria-live="polite"></p>
+            </section><section class="faq-section" id="faq">
     <div class="section-heading" style="margin-bottom: 24px;">
         <h2>Frequently asked questions.</h2>
         <p>Got questions? We've got answers about files, proofs, and shipping.</p>
@@ -505,8 +577,6 @@
         </article>
     </div>
 </section>
-                <p id="estimate" aria-live="polite"></p>
-            </section>
         </main>
 
         <footer>
