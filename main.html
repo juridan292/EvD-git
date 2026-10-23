@@ -3,345 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business web</title>
+    <title>Printopia - Good Design. Great Print.</title>
+    <!-- PyScript Releases 2026.7.3 -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
     <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <style>
+        :root {
+            --ink: #192c28;
+            --green: #275c4d;
+            --lime: #d6ef8a;
+            --cream: #f8f7f1;
+            --muted: #66716d;
+            --line: #e2e5dd;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--cream);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* Fixed & completed Header Layout styling */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .brand span {
+            color: var(--green);
+        }
+
+        nav {
+            display: flex;
+            gap: 26px;
+            color: #45544f;
+            font-size: 0.95rem;
+        }
+
+        .button {
+            display: inline-block;
+            border: 0;
+            border-radius: 999px;
+            padding: 13px 20px;
+            color: white;
+            background: var(--green);
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .button:hover {
+            background: #1c463a;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 44px;
+            padding: 68px 0 82px;
+        }
+
+        .eyebrow {
+            margin: 0 0 16px;
+            color: var(--green);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 620px;
+            margin: 0;
+            font-size: clamp(2.8rem, 6vw, 5.3rem);
+            line-height: 0.98;
+            letter-spacing: -0.065em;
+        }
+
+        .hero-copy {
+            max-width: 480px;
+            margin: 22px 0 28px;
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .hero-art {
+            min-height: 340px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 28px;
+            background: var(--lime);
+        }
+
+        .paper-stack {
+            position: relative;
+            width: 210px;
+            height: 250px;
+            border-radius: 8px;
+            background: #fffdf6;
+            box-shadow: 18px 17px 0 #bad478, 36px 34px 0 #91b96f;
+            transform: rotate(-7deg);
+        }
+
+        .paper-stack::before {
+            content: "MAKE IT\A MATTER.";
+            white-space: pre;
+            position: absolute;
+            top: 53px;
+            left: 28px;
+            color: var(--green);
+            font-size: 2.15rem;
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.07em;
+        }
+
+        .paper-stack::after {
+            content: "GOOD DESIGN. GREAT PRINT.";
+            position: absolute;
+            left: 29px;
+            bottom: 30px;
+            color: #747d62;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        section {
+            padding: 64px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.05em;
+        }
+
+        .section-heading p {
+            max-width: 390px;
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            padding: 25px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: white;
+        }
+
+        .card .icon {
+            font-size: 1.7rem;
+        }
+
+        .card h3 {
+            margin: 18px 0 8px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .quote-section {
+            margin: 30px 0 70px;
+            padding: 40px;
+            border-radius: 24px;
+            color: white;
+            background: var(--ink);
+        }
+
+        .quote-section h2 {
+            margin-bottom: 10px;
+        }
+
+        .quote-section > p {
+            margin: 0 0 28px;
+            color: #c4d0ca;
+            line-height: 1.6;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #e7eee9;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        input, select {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 13px;
+            border: 1px solid #53645d;
+            border-radius: 10px;
+            color: var(--ink);
+            background: white;
+            font: inherit;
+        }
+
+        .quote-grid .button {
+            min-height: 48px;
+            color: var(--ink);
+            background: var(--lime);
+        }
+
+        #estimate {
+            min-height: 26px;
+            margin: 20px 0 0;
+            color: var(--lime);
+            font-weight: 700;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 24px 0 35px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 720px) {
+            nav {
+                display: none;
+            }
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 45px 0 55px;
+            }
+            .hero-art {
+                min-height: 270px;
+            }
+            .services {
+                grid-template-columns: 1fr;
+            }
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+            .quote-section {
+                padding: 28px 22px;
+            }
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-<style>
-    :root {
-      --ink: #192c28;
-      --green: #275c4d;
-      --lime: #d6ef8a;
-      --cream: #f8f7f1;
-      --muted: #66716d;
-      --line: #e2e5dd;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--cream);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(1100px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-    }
-
-    .brand span { color: var(--green); }
-
-    nav { display: flex; gap: 26px; color: #45544f; font-size: .95rem; }
-
-    .button {
-      display: inline-block;
-      border: 0;
-      border-radius: 999px;
-      padding: 13px 20px;
-      color: white;
-      background: var(--green);
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .button:hover { background: #1c463a; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      align-items: center;
-      gap: 44px;
-      padding: 68px 0 82px;
-    }
-
-    .eyebrow {
-      margin: 0 0 16px;
-      color: var(--green);
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 620px;
-      margin: 0;
-      font-size: clamp(2.8rem, 6vw, 5.3rem);
-      line-height: .98;
-      letter-spacing: -.065em;
-    }
-
-    .hero-copy {
-      max-width: 480px;
-      margin: 22px 0 28px;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-
-    .hero-art {
-      min-height: 340px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border-radius: 28px;
-      background: var(--lime);
-    }
-
-    .paper-stack {
-      position: relative;
-      width: 210px;
-      height: 250px;
-      border-radius: 8px;
-      background: #fffdf6;
-      box-shadow: 18px 17px 0 #bad478, 36px 34px 0 #91b96f;
-      transform: rotate(-7deg);
-    }
-
-    .paper-stack::before {
-      content: "MAKE IT\A MATTER.";
-      white-space: pre;
-      position: absolute;
-      top: 53px;
-      left: 28px;
-      color: var(--green);
-      font-size: 2.15rem;
-      font-weight: 900;
-      line-height: .95;
-      letter-spacing: -.07em;
-    }
-
-    .paper-stack::after {
-      content: "GOOD DESIGN. GREAT PRINT.";
-      position: absolute;
-      left: 29px;
-      bottom: 30px;
-      color: #747d62;
-      font-size: .55rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-    }
-
-    section { padding: 64px 0; }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 28px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -.05em;
-    }
-
-    .section-heading p {
-      max-width: 390px;
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .card {
-      padding: 25px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: white;
-    }
-
-    .card .icon { font-size: 1.7rem; }
-
-    .card h3 { margin: 18px 0 8px; }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .quote-section {
-      margin: 30px 0 70px;
-      padding: 40px;
-      border-radius: 24px;
-      color: white;
-      background: var(--ink);
-    }
-
-    .quote-section h2 { margin-bottom: 10px; }
-
-    .quote-section > p {
-      margin: 0 0 28px;
-      color: #c4d0ca;
-      line-height: 1.6;
-    }
-
-    .quote-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr auto;
-      align-items: end;
-      gap: 16px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      color: #e7eee9;
-      font-size: .9rem;
-      font-weight: 700;
-    }
-
-    input, select {
-      width: 100%;
-      min-height: 48px;
-      padding: 0 13px;
-      border: 1px solid #53645d;
-      border-radius: 10px;
-      color: var(--ink);
-      background: white;
-      font: inherit;
-    }
-
-    .quote-grid .button {
-      min-height: 48px;
-      color: var(--ink);
-      background: var(--lime);
-    }
-
-    #estimate {
-      min-height: 26px;
-      margin: 20px 0 0;
-      color: var(--lime);
-      font-weight: 700;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 24px 0 35px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    @media (max-width: 720px) {
-      nav { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 45px 0 55px; }
-      .hero-art { min-height: 270px; }
-      .services { grid-template-columns: 1fr; }
-      .section-heading { align-items: start; flex-direction: column; }
-      .quote-grid { grid-template-columns: 1fr; }
-      .quote-section { padding: 28px 22px; }
-      footer { flex-direction: column; }
-    }
-  </style>
-</head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="#">INK <span>&</span> PAPER</a>
-      <nav aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#quote">Quick estimate</a>
-      </nav>
-      <a class="button" href="#quote">Get a quote</a>
-    </header>
+    <div class="wrap">
+        <header>
+            <a class="brand" href="#">Print<span>opia</span></a>
+            <nav aria-label="Main navigation">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#quote">Quick estimate</a>
+            </nav>
+            <a class="button" href="#quote">Get a quote</a>
+        </header>
 
-    <main>
-      <section class="hero" id="about">
-        <div>
-          <p class="eyebrow">Your neighborhood print studio</p>
-          <h1>Good ideas deserve great print.</h1>
-          <p class="hero-copy">
-            From the first sketch to the finished stack, we make print simple,
-            thoughtful, and ready to share.
-          </p>
-          <a class="button" href="#services">Explore our services</a>
-        </div>
-        <div class="hero-art" aria-label="Printed design sample">
-          <div class="paper-stack"></div>
-        </div>
-      </section>
+        <main>
+            <section class="hero" id="about">
+                <div>
+                    <p class="eyebrow">Your neighborhood print studio</p>
+                    <h1>Good ideas deserve great print.</h1>
+                    <p class="hero-copy">
+                        From the first sketch to the finished stack, we make print simple, thoughtful, and ready to share.
+                    </p>
+                    <a class="button" href="#services">Explore our services</a>
+                </div>
+                <div class="hero-art" aria-label="Printed design sample">
+                    <div class="paper-stack"></div>
+                </div>
+            </section>
 
-      <section id="services">
-        <div class="section-heading">
-          <h2>Print for every idea.</h2>
-          <p>Small runs or big launches, we can help bring your project to life.</p>
-        </div>
+            <section id="services">
+                <div class="section-heading">
+                    <h2>Print for every idea.</h2>
+                    <p>Small runs or big launches, we can help bring your project to life.</p>
+                </div>
+                <div class="services">
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">✳</div>
+                        <h3>Business essentials</h3>
+                        <p>Business cards, letterheads, envelopes, and branded stationery.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">▤</div>
+                        <h3>Marketing materials</h3>
+                        <p>Flyers, brochures, menus, and posters that get noticed.</p>
+                    </article>
+                    <article class="card">
+                        <div class="icon" aria-hidden="true">▧</div>
+                        <h3>Custom projects</h3>
+                        <p>Invitations, stickers, packaging, and one-of-a-kind print jobs.</p>
+                    </article>
+                </div>
+            </section>
 
-        <div class="services">
-          <article class="card">
-            <div class="icon" aria-hidden="true">✳</div>
-            <h3>Business essentials</h3>
-            <p>Business cards, letterheads, envelopes, and branded stationery.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">▤</div>
-            <h3>Marketing materials</h3>
-            <p>Flyers, brochures, menus, and posters that get noticed.</p>
-          </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">▧</div>
-            <h3>Custom projects</h3>
-            <p>Invitations, stickers, packaging, and one-of-a-kind print jobs.</p>
-          </article>
-        </div>
-      </section>
+            <section class="quote-section" id="quote">
+                <h2>Get a quick estimate.</h2>
+                <p>Choose a product and quantity to see a sample estimate. Final pricing may vary.</p>
+                <div class="quote-grid">
+                    <div>
+                        <label for="product">Product</label>
+                        <select id="product">
+                            <option value="cards">Business cards</option>
+                            <option value="flyers">Flyers</option>
+                            <option value="posters">Posters</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="quantity">Quantity</label>
+                        <input id="quantity" type="number" min="1" value="100">
+                    </div>
+                    <button class="button" id="estimate-button" py-click="calculate_estimate" type="button">
+                        Calculate estimate
+                    </button>
+                </div>
+                <p id="estimate" aria-live="polite"></p>
+            </section>
+        </main>
 
-      <section class="quote-section" id="quote">
-        <h2>Get a quick estimate.</h2>
-        <p>Choose a product and quantity to see a sample estimate. Final pricing may vary.</p>
+        <footer>
+            <span>© 2026 Printopia Printing</span>
+            <span>hello@printopia.example · Mon–Fri, 9am–5pm</span>
+        </footer>
+    </div>
 
-        <div class="quote-grid">
-          <div>
-            <label for="product">Product</label>
-            <select id="product">
-              <option value="cards">Business cards</option>
-              <option value="flyers">Flyers</option>
-              <option value="posters">Posters</option>
-            </select>
-          </div>
-          <div>
-            <label for="quantity">Quantity</label>
-            <input id="quantity" type="number" min="1" value="100">
-          </div>
-          <button class="button" id="estimate-button" type="button">
-            Calculate estimate
-          </button>
-        </div>
-        <p id="estimate" aria-live="polite"></p>
-      </section>
-    </main>
-
-    <footer>
-      <span>© 2026 Ink & Paper Printing</span>
-      <span>hello@inkandpaper.example · Mon–Fri, 9am–5pm</span>
-    </footer>
-  </div>
-
-  <script type="py" src="./main.py"></script>
+    <script type="py" src="./main.py"></script>
 </body>
-</html>
 </html>
