@@ -319,7 +319,37 @@
         font-size: 1.2rem;
         font-weight: 700;
     }
+    /* FAQ Section Styles */
+  .faq-section {
+      width: 100%;
+      margin-bottom: 40px;
+  }
 
+  .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+  }
+
+  .faq-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.85);
+  }
+
+  .faq-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: var(--ink);
+  }
+
+  .faq-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+  }
     footer {
         display: flex;
         justify-content: space-between;
@@ -414,12 +444,12 @@
                         <p>Business cards, letterheads, envelopes, and branded stationery.</p>
                     </article>
                     <article class="card">
-                        <div class="icon" aria-hidden="true">▤</div>
+                        <div class="icon2" aria-hidden="true">▤</div>
                         <h3>Marketing materials</h3>
                         <p>Flyers, brochures, menus, and posters that get noticed.</p>
                     </article>
                     <article class="card">
-                        <div class="icon" aria-hidden="true">▧</div>
+                        <div class="icon3" aria-hidden="true">▧</div>
                         <h3>Custom projects</h3>
                         <p>Invitations, stickers, packaging, and one-of-a-kind print jobs.</p>
                     </article>
@@ -429,23 +459,52 @@
             <section class="quote-section" id="quote">
                 <h2>Get a quick estimate.</h2>
                 <p>Choose a product and quantity to see a sample estimate. Final pricing may vary.</p>
-                <div class="quote-grid">
-                    <div>
-                        <label for="product">Product</label>
-                        <select id="product">
-                            <option value="cards">Business cards</option>
-                            <option value="flyers">Flyers</option>
-                            <option value="posters">Posters</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="quantity">Quantity</label>
-                        <input id="quantity" type="number" min="1" value="100">
-                    </div>
-                    <button class="button" id="estimate-button" py-click="calculate_estimate" type="button">
-                        Calculate estimate
-                    </button>
-                </div>
+                <div>
+    <label for="product">Product</label>
+    <select id="product">
+        <option value="cards">Business cards</option>
+        <option value="flyers">Flyers</option>
+        <option value="posters">Posters</option>
+    </select>
+</div>
+<div>
+    <label for="finish">Paper & Finish</label>
+    <select id="finish">
+        <option value="standard">Standard Matte</option>
+        <option value="matte">Premium Silk</option>
+        <option value="velvet">Velvet Soft-Touch</option>
+        <option value="gold">Gold Foil Accent</option>
+    </select>
+</div>
+<div>
+    <label for="quantity">Quantity</label>
+    <input id="quantity" type="number" min="1" value="100">
+</div>
+<button class="button" id="estimate-button" py-click="calculate_estimate" type="button">
+    Calculate
+</button>
+
+<!-- 2. FAQ SECTION (Insert right after </section> of the quote-section) -->
+<section class="faq-section" id="faq">
+    <div class="section-heading" style="margin-bottom: 24px;">
+        <h2>Frequently asked questions.</h2>
+        <p>Got questions? We've got answers about files, proofs, and shipping.</p>
+    </div>
+    <div class="faq-grid">
+        <article class="faq-card">
+            <h3>What file formats do you accept?</h3>
+            <p>We prefer high-resolution PDF, AI, or PSD files saved in CMYK color mode with at least 300 DPI resolution.</p>
+        </article>
+        <article class="faq-card">
+            <h3>What is your standard turnaround time?</h3>
+            <p>Most standard print orders are processed, printed, and ready for shipment or pickup within 3 to 5 business days.</p>
+        </article>
+        <article class="faq-card">
+            <h3>Can I request custom paper stocks?</h3>
+            <p>Yes! Reach out directly via email for specialty textures, cotton papers, or custom foil stamp orders.</p>
+        </article>
+    </div>
+</section>
                 <p id="estimate" aria-live="polite"></p>
             </section>
         </main>
