@@ -351,23 +351,16 @@
       line-height: 1.6;
   }
     /* Specialty Finishes Section Styles */
-.finishes-section {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.finishes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
+/* Update base finish card styling for background support */
 .finish-card {
     position: relative;
     padding: 32px;
     border: 1px solid var(--line);
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -377,6 +370,69 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
 }
 
+/* Finish-specific background images with gradient overlays */
+.finish-foil {
+    background-image: linear-gradient(rgba(241, 246, 248, 0.92), rgba(241, 246, 248, 0.92)), url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80');
+}
+
+.finish-velvet {
+    background-image: linear-gradient(rgba(241, 246, 248, 0.92), rgba(241, 246, 248, 0.92)), url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80');
+}
+
+.finish-uv {
+    background-image: linear-gradient(rgba(241, 246, 248, 0.92), rgba(241, 246, 248, 0.92)), url('https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80');
+}
+
+.finish-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: var(--lime);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.finish-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+.finish-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+/* Update base card styling to support background images */
+.card {
+    position: relative;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 100%;
+}
+
+
+.card-business {
+    background-image: linear-gradient(rgba(231, 247, 253, 0.92), rgba(224, 241, 245, 0.92)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80');
+}
+
+.card-marketing {
+    background-image: linear-gradient(rgba(231, 243, 247, 0.92), rgba(230, 241, 250, 0.92)), url('https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80');
+}
+
+.card-custom {
+    background-image: linear-gradient(rgba(224, 241, 248, 0.92), rgba(225, 238, 250, 0.92)), url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80');
+}
 .finish-badge {
     position: absolute;
     top: 24px;
@@ -490,22 +546,22 @@
                     <p>Small runs or big launches, we can help bring your project to life.</p>
                 </div>
                 <div class="services">
-                    <article class="card">
-                        <div class="icon" aria-hidden="true">✳</div>
-                        <h3>Business essentials</h3>
-                        <p>Business cards, letterheads, envelopes, and branded stationery.</p>
-                    </article>
-                    <article class="card">
-                        <div class="icon2" aria-hidden="true">▤</div>
-                        <h3>Marketing materials</h3>
-                        <p>Flyers, brochures, menus, and posters that get noticed.</p>
-                    </article>
-                    <article class="card">
-                        <div class="icon3" aria-hidden="true">▧</div>
-                        <h3>Custom projects</h3>
-                        <p>Invitations, stickers, packaging, and one-of-a-kind print jobs.</p>
-                    </article>
-                </div>
+                  <article class="card card-business">
+                      <div class="icon" aria-hidden="true">✳</div>
+                      <h3>Business essentials</h3>
+                      <p>Business cards, letterheads, envelopes, and branded stationery.</p>
+                  </article>
+                  <article class="card card-marketing">
+                      <div class="icon2" aria-hidden="true">▤</div>
+                      <h3>Marketing materials</h3>
+                      <p>Flyers, brochures, menus, and posters that get noticed.</p>
+                  </article>
+                  <article class="card card-custom">
+                      <div class="icon3" aria-hidden="true">▧</div>
+                      <h3>Custom projects</h3>
+                      <p>Invitations, stickers, packaging, and one-of-a-kind print jobs.</p>
+                  </article>
+</div>
             </section>
             <!-- Specialty Finishes Section -->
 <section class="finishes-section">
@@ -514,19 +570,20 @@
         <p>Elevate your brand with tactile touches that demand attention.</p>
     </div>
     <div class="finishes-grid">
-        <div class="finish-card">
-            <div class="finish-badge">Popular</div>
-            <h3>Gold & Silver Foil</h3>
-            <p>Reflective metallic stamping that adds a striking luxury sheen to logos and borders.</p>
-        </div>
-        <div class="finish-card">
-            <h3>Velvet Soft-Touch</h3>
-            <p>A velvety, matte lamination that feels soft to the touch and deepens color richness.</p>
-        </div>
-        <div class="finish-card">
-            <h3>Spot UV Gloss</h3>
-            <p>High-gloss raised coating applied over specific areas for high-contrast texture.</p>
-        </div>
+    <div class="finish-card finish-foil">
+        <div class="finish-badge">Popular</div>
+        <h3>Gold & Silver Foil</h3>
+        <p>Reflective metallic stamping that adds a striking luxury sheen to logos and borders.</p>
+    </div>
+    <div class="finish-card finish-velvet">
+        <h3>Velvet Soft-Touch</h3>
+        <p>A velvety, matte lamination that feels soft to the touch and deepens color richness.</p>
+    </div>
+    <div class="finish-card finish-uv">
+        <h3>Spot UV Gloss</h3>
+        <p>High-gloss raised coating applied over specific areas for high-contrast texture.</p>
+    </div>
+</div>
     </div>
 </section>  
             <section class="quote-section" id="quote">
@@ -600,12 +657,28 @@ PRODUCT_NAMES = {
     "posters": "Posters"
 }
 
+FINISH_MULTIPLIERS = {
+    "standard": 1.0,
+    "matte": 1.2,
+    "velvet": 1.4,
+    "gold": 1.8
+}
+
+FINISH_NAMES = {
+    "standard": "Standard Matte",
+    "matte": "Premium Silk",
+    "velvet": "Velvet Soft-Touch",
+    "gold": "Gold Foil Accent"
+}
+
 def calculate_estimate(event):
     product_select = document.querySelector("#product")
+    finish_select = document.querySelector("#finish")
     quantity_input = document.querySelector("#quantity")
     estimate_output = document.querySelector("#estimate")
     
     product_key = product_select.value
+    finish_key = finish_select.value
     
     try:
         qty = int(quantity_input.value)
@@ -614,10 +687,13 @@ def calculate_estimate(event):
             return
             
         unit_price = RATES.get(product_key, 0.20)
-        total = qty * unit_price
-        product_name = PRODUCT_NAMES.get(product_key, "Items")
+        multiplier = FINISH_MULTIPLIERS.get(finish_key, 1.0)
+        total = (qty * unit_price) * multiplier
         
-        estimate_output.innerText = f"Estimated total for {qty:,} {product_name}: ${total:,.2f}"
+        product_name = PRODUCT_NAMES.get(product_key, "Items")
+        finish_name = FINISH_NAMES.get(finish_key, "Standard")
+        
+        estimate_output.innerText = f"Estimated total for {qty:,} {product_name} ({finish_name}): ${total:,.2f}"
     except ValueError:
         estimate_output.innerText = "Please enter a valid numeric quantity."
     </script>
